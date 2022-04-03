@@ -1,0 +1,152 @@
+store 0 $varA
+store 0 $varB
+
+store 0 $op
+
+strout '\clg\#============| CALCULATOR |============#\n\'
+strout '\clg\|=========| ENTER VARIABLES |==========|\n\'
+strout '\clg\#======================================#\n\'
+
+strout '\clg\|=|\ce\ A - '
+ui
+store $varA
+
+strout '\clg\|=|\ce\ B - '
+ui
+store $varB
+
+strout '\clg\#=========| ENTER OPERATION |==========#\n\'
+strout '\clg\|======================================|\n\'
+strout '\clg\|=|\ce\ ADDITION          1 \clg\|==============|\n\'
+strout '\clg\|=|\ce\ SUBTRACTION       2 \clg\|==============|\n\'
+strout '\clg\|=|\ce\ MULTIPLICATION    3 \clg\|==============|\n\'
+strout '\clg\|=|\ce\ DIVISION          4 \clg\|==============|\n\'
+strout '\clg\|=|\ce\ REMAINDER         5 \clg\|==============|\n\'
+strout '\clg\|=|\ce\ EXPONENT          6 \clg\|==============|\n\'
+strout '\clg\#======================================#\n\'
+
+strout '\clg\|=|\ce\ ENTER OPERATION NUMBER - '
+ui
+store $op
+
+
+
+SWITCH:
+	load $op
+	
+	strout '\clg\#======================================#\n\|=| '
+	
+	dec
+	jmpz $ADDITION
+	dec
+	jmpz $SUBTRACTION
+	dec
+	jmpz $MULTIPLICATION
+	dec
+	jmpz $DIVISION
+	dec
+	jmpz $REMAINDER
+	dec
+	jmpz $EXPONENT
+	
+	strout '\cr\ERROR\clr\ invalid operation number\n\'
+	halt
+
+
+
+ADDITION:
+	load $varA
+	add $varB
+	store $result
+	
+	strout $varA ' + ' $varB ' = ' $result
+	strout '\n\\clg\#======================================#\n\'
+	halt
+	
+SUBTRACTION:
+	load $varA
+	sub $varB
+	store $result
+	
+	strout $varA ' - ' $varB ' = ' $result
+	strout '\n\\clg\#======================================#\n\'
+	halt
+
+MULTIPLICATION:
+	load $varA
+	mul $varB
+	store $result
+	
+	strout $varA ' * ' $varB ' = ' $result
+	strout '\n\\clg\#======================================#\n\'
+	halt
+
+DIVISION:
+	load $varA
+	div $varB
+	store $result
+	
+	strout $varA ' / ' $varB ' = ' $result
+	strout '\n\\clg\#======================================#\n\'
+	halt
+
+REMAINDER:
+	load $varA
+	mod $varB
+	store $result
+	
+	strout $varA ' % ' $varB ' = ' $result
+	strout '\n\\clg\#======================================#\n\'
+	halt
+
+EXPONENT:
+	load $varB
+	jmpz $EXP_0
+	
+	store $varA $mul
+	store 0 $iter
+	
+	EXP_LS:
+		load $iter
+		inc
+		store $iter
+		cmp $varB
+		jmpz $EXP_LE
+		
+		load $varA
+		mul $mul
+		store $varA
+		
+		jump $EXP_LS
+	EXP_LE:
+		strout $mul ' ^ ' $varB ' = ' $varA
+		strout '\n\\clg\#======================================#\n\'
+		halt
+	EXP_0:
+		strout $varA ' ^ 0 = 1\n\'
+		strout '\clg\#======================================#\n\'
+		halt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

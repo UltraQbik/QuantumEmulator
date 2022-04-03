@@ -1,0 +1,43 @@
+strout '\r\'		#clears the screen
+
+strout 'Color commands start and end with \s\\n\'
+strout "Example \s\clw\s\ which means 'color light white'\n\"		#NOTE: double quotes are used here
+strout 'colors are defined by their fisrt colors, with an exception of\n\\clw\white\ce\ and \clwd\\ck\black\ce\\ced\\n\'
+
+strout '\n\so here are all the colors\n\'
+strout '\cr\\s\cr\s\ color red\n\'
+strout '\cg\\s\cg\s\ color green\n\'
+strout '\cb\\s\cb\s\ color blue\n\'
+strout '\cy\\s\cy\s\ color yellow\n\'
+strout '\cc\\s\cc\s\ color cyan\n\'
+strout '\cm\\s\cm\s\ color magenta\n\'
+
+strout '\n\\ce\And their light versions\n\'
+strout '\clr\\s\clr\s\ color light red\n\'
+strout '\clg\\s\clg\s\ color light green\n\'
+strout '\clb\\s\clb\s\ color light blue\n\'
+strout '\cly\\s\cly\s\ color light yellow\n\'
+strout '\clc\\s\clc\s\ color light cyan\n\'
+strout '\clm\\s\clm\s\ color light magenta\n\'
+
+strout '\n\\ce\Now, shades of grey\n\'
+strout '\clw\\s\clw\s\ color light white\n\'
+strout '\cw\\s\cw\s\ color white\n\'
+strout '\clk\\s\clk\s\ color light black\n\'
+strout '\ck\\s\ck\s\ color black\n\'
+
+strout '\n\\ce\Same but with light white background\n\'
+strout '\clwd\\clw\\s\clw\s\ color light white\ced\\n\'
+strout '\clwd\\cw\\s\cw\s\ color white\ced\\n\'
+strout '\clwd\\clk\\s\clk\s\ color light black\ced\\n\'
+strout '\clwd\\ck\\s\ck\s\ color black\ced\\n\'
+
+strout "\clw\\n\To erase the color use \s\ce\s\ which means 'color erase'"
+strout "\n\To specify if the color operation should be applied on the text or its background use 'd' as one of the modifiers"
+strout '\n\Example: \s\clrd\s\ which means \clrd\color light red background\ced\\n\'
+
+strout '\clw\\n\If names of the color doesnt make sense, its fine\n\Its made for easier conversion, because making special cases for\n\white, light grey, grey and black isnt fun\n\'
+
+strout '\n\I used \s\ but its not as easy as placing \s\ in strout instruction\n\To make a \s\ put \s\s\s\ in your strout instruction'
+strout '\n\You can check this file, to see the formating\n\'
+strout '\n\\n\I hope this was useful!\n\'

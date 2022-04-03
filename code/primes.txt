@@ -1,0 +1,73 @@
+store 1 $number
+
+store 0 $iter
+store 3511 $max
+
+MAIN:
+	load $number
+	cmp $max
+	jmpp $HALT
+	
+	load $iter;inc;store $iter
+	
+	call $CHECK_PRIME
+	jmpz $MAIN
+	
+	strout $iter ' - ' $number '\n\'
+	
+	load $number;inc;store $number
+	
+	jump $MAIN
+
+CHECK_PRIME:
+	load $iter
+	mod 2
+	jmpz $NOT_PRIME
+	
+	store 1 $i
+	
+	LS:
+		load $i
+		inc
+		store $i
+		mul $i
+		cmp $iter
+		jmpp $IS_PRIME
+		
+		load $iter
+		mod $i
+		jmpz $NOT_PRIME
+		
+		jump $LS
+	
+	IS_PRIME:
+		return 1
+	
+	NOT_PRIME:
+		return 0
+
+HALT:
+	halt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
